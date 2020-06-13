@@ -212,7 +212,6 @@ router.put(
  * @description - Get Checklists by User Email
  * @param - /user/my-checklist/:email
  */
-
 router.get("/my-checklist/:email", AuthenUser, async(req, res) => {
     // const email = req.header("emai-backend")
     const email = req.params.email;
@@ -225,7 +224,7 @@ router.get("/my-checklist/:email", AuthenUser, async(req, res) => {
             // .sort("checklist.createdAt")
         res.status(200).json(users);
     } catch (e) {
-        res.send({ message: "Error in Fetching Checklists User" });
+        res.status(500).send({ message: "Error in Fetching Checklists User" });
     }
 });
 
@@ -250,10 +249,28 @@ router.delete("/my-checklist/:email/:id", AuthenUser, async(req, res) => {
             // const deletedChecklist = await user.pull({ checklist: { _id: id } })
             // console.log(user)
     } catch (e) {
-        res.send({ message: "Error in Deleting Checklist" });
+        res.status(500).send({ message: "Error in Deleting Checklist" });
         console.log(e)
     }
 })
+
+
+/**
+ * @method - GET
+ * @description - Get User Profile by User Email
+ * @param - /user/profile
+ */
+router.get("/profile/:email", AuthenUser, async(req, res) => {
+    // const email = req.header("emai-backend")
+    const email = req.params.email;
+
+    try {
+        const users = await UserModel.findOne({ email: email })
+        res.status(200).json(users);
+    } catch (e) {
+        res.status(500).send({ message: "Error in Fetching User" });
+    }
+});
 
 
 

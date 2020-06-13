@@ -78,8 +78,7 @@ const Login = () => {
 
 
                 <p className="forgot-password text-right">
-                    {/* Forgot <a href="#">password?</a> */}
-                    Forgot <Link to={"/"}>password?</Link>
+                    Doesn't have account <Link to={"/signup"}>Sign Up?</Link>
                 </p>
             </form>
         </div>

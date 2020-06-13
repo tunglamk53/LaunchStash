@@ -6,12 +6,12 @@ import UserContext from '../../contexts/UserContext'
 const NavBar = () => {
     const { loggedIn } = useContext(UserContext)
     // const tkn = localStorage.getItem("myToken")
-    
+
     if (loggedIn === null || loggedIn === "undefined") {
         return (
             <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                 <div className="container">
-                <Link className="navbar-brand" to={"/"}>HOME - CSIS 4495</Link>
+                <Link className="navbar-brand" to={"/"}>LAUNCH STASH - CSIS 4495</Link>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
@@ -29,7 +29,7 @@ const NavBar = () => {
         return (
             <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                 <div className="container">
-                    <Link className="navbar-brand" to={"/"}>HOME - CSIS 4495</Link>
+                    <Link className="navbar-brand" to={"/"}>LAUNCH STASH - CSIS 4495</Link>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
