@@ -2,7 +2,9 @@ const jwt = require("jsonwebtoken");
 
 const authLogIn = (req, res, next) => {
   const token = req.header("token-backend");
-  if (!token) return res.status(401).json({ message: "Auth Error" });
+
+  if (!token)
+    return res.status(401).json({ message: "Auth Error" });
 
   try {
     const decoded = jwt.verify(token, "myToken");
