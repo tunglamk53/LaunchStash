@@ -18,15 +18,20 @@ import RouteHandler from './router/RouteHandler'
 import CreationPage from './pages/CreationPage';
 import ChecklistPage from './pages/ChecklistPage';
 import UserContext from './contexts/UserContext'
+import CheckBoxContext from './contexts/CheckBoxContext'
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("myToken"));
-  const value = useMemo(() => ({ loggedIn, setLoggedIn }), [loggedIn, setLoggedIn]);
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("myToken"))
+  const value = useMemo(() => ({ loggedIn, setLoggedIn }), [loggedIn, setLoggedIn])
   // const loggedIn = localStorage.getItem("myToken")
+  const [Step2, setStep2] = useState([])
+  const checkboxValue = useMemo(() => ({ Step2, setStep2 }), [Step2, setStep2]);
+
 
   return (
     <Router>
       <UserContext.Provider value={value}>
+      <CheckBoxContext.Provider value={checkboxValue}>
         <div className="App">
           <div className="NavBar">
             <NavBar />
@@ -58,6 +63,7 @@ function App() {
           }
 
         </div>
+      </CheckBoxContext.Provider>
       </UserContext.Provider>
     </Router>
   );

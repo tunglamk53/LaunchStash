@@ -7,7 +7,7 @@ const ChecklistPage = () => {
 
         useEffect(() => {
             const fetchData = async() => {
-                const result = await fetch(
+                const res = await fetch(
                     `/user/my-checklist/${localStorage.getItem('myEmail')}`, {
                         method: 'GET',
                         headers: {
@@ -15,39 +15,39 @@ const ChecklistPage = () => {
                             'token-backend': localStorage.getItem('myToken'),
                             'email-backend': localStorage.getItem('myEmail')
                         }
-                    });
-                const body = await result.json()
-                setData({ checklists: body.checklist })
-                // console.log(body);
+                    })
+                if(res.status === 200) {
+                  const body = await res.json()
+                  setData({ checklists: body.checklist })
+                  console.log(body);
+                }
             }
             fetchData();
         }, [setData])
 
-        console.log(data);
+        // console.log(data);
 
         return (
             <>
             <div className="auth-wrapper">
-            <div className="auth-inner">
-              <h1> My Checklists List </h1>
-              {data ?
+              <div className="auth-inner">
+                <h1> My Checklists List </h1>
+                {data ?
                   data.checklists.map((item, i) => {
                       // console.log(item._id)
-                      return (
-                          <CheckList key={i}
-                              part1={item.part1}
-                              part2={item.part2}
-                              part3={item.part3}
-                              checklistId={item._id}
-                              setData={setData}
-                              // setDelClicked={setDelClicked}
-                          />
-                      )
-                  }
-                  )
-              : null
-              }
-            </div>
+                    return (
+                        <CheckList key={i}
+                            part1={item.part1}
+                            part2={item.part2}
+                            part3={item.part3}
+                            checklistId={item._id}
+                            setData={setData}
+                            // setDelClicked={setDelClicked}
+                        />
+                    )
+                  })
+                : null}
+              </div>
             </div>
             </>
         )

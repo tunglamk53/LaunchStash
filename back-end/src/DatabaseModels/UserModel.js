@@ -13,11 +13,10 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  checklist: [
+  checklists: [
     {
-      part1: {type: String},
-      part2: {type: String},
-      part3: {type: String},
+      step1: [{ type: String }],
+      step2: [{ type: String }],
       createdAt: {
         type: Date,
         default: Date.now()

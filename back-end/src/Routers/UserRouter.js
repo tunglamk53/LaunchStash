@@ -65,7 +65,7 @@ router.post(
             jwt.sign(
                 payload,
                 "myToken", {
-                    expiresIn: 1800
+                    expiresIn: 3600 //login-token is expired in 60 mins
                 },
                 (err, token) => {
                     if (err) throw err;
@@ -163,66 +163,19 @@ router.get("/loggedin", AuthenUser, async(req, res) => {
 
 
 /**
- * @method - POST
- * @description - POST Checklist - LoggedIn User
- * @param - /user/checklist
- */
-router.put(
-    "/checklist", AuthenUser,
-    async(req, res) => {
-        const {
-            email,
-            part1,
-            part2,
-            part3
-        } = req.body;
-        try {
-            await UserModel.findOneAndUpdate({ email: email }, {
-                    $addToSet: {
-                        'checklist': {
-                            'part1': part1,
-                            'part2': part2,
-                            'part3': part3
-                        }
-                    }
-                }, { upsert: true, new: true },
-                (err, todo) => {
-                    if (err) return res.status(500).send({
-                        message: 'Failed:  to save user checklist',
-                        isSuccess: false,
-                        result: todo
-                    });
-                    return res.status(200).send({
-                        message: 'Success:  to save user checklist',
-                        isSuccess: true,
-                        result: todo
-                    });
-                }
-            );
-        } catch (err) {
-            console.log(err.message);
-            res.status(500).send("Error in Saving");
-        }
-    }
-)
-
-
-/**
  * @method - GET
- * @description - Get Checklists by User Email
+ * @description - GET Checklists by User Email
  * @param - /user/my-checklist/:email
  */
 router.get("/my-checklist/:email", AuthenUser, async(req, res) => {
-    // const email = req.header("emai-backend")
     const email = req.params.email;
 
-    console.log(req.header("email-backend"))
     try {
-        const users = await UserModel.findOne({ email: email })
+        const user = await UserModel.findOne({ email: email })
             // .match({"email" : email})
             // .project({"checklist" : 1})
             // .sort("checklist.createdAt")
-        res.status(200).json(users);
+        res.status(200).json(user);
     } catch (e) {
         res.status(500).send({ message: "Error in Fetching Checklists User" });
     }
@@ -261,19 +214,57 @@ router.delete("/my-checklist/:email/:id", AuthenUser, async(req, res) => {
  * @param - /user/profile
  */
 router.get("/profile/:email", AuthenUser, async(req, res) => {
-    // const email = req.header("emai-backend")
     const email = req.params.email;
 
     try {
-        const users = await UserModel.findOne({ email: email })
-        res.status(200).json(users);
+        const user = await UserModel.findOne({ email: email })
+        res.status(200).json(user);
     } catch (e) {
         res.status(500).send({ message: "Error in Fetching User" });
     }
 });
 
 
+/**
+ * @method - PUT
+ * @description - PUT Update Checklist - LoggedIn User
+ * @param - /user/checklist
+ */
+router.put(
+    "/checklists", AuthenUser,
+    async(req, res) => {
+        const {
+            email,
+            step2
+        } = req.body;
 
+        try {
+            await UserModel.findOneAndUpdate({ email: email }, {
+                    $addToSet: {
+                        'checklists': {
+                            'step2': step2
+                        }
+                    }
+                }, { upsert: true, new: true },
+                (err, todo) => {
+                    if (err) return res.status(500).send({
+                        message: 'Failed:  to save user checklist',
+                        isSuccess: false,
+                        result: todo
+                    });
+                    return res.status(200).send({
+                        message: 'Success:  to save user checklist',
+                        isSuccess: true,
+                        result: todo
+                    });
+                }
+            );
+        } catch (err) {
+            console.log(err.message);
+            res.status(500).send("Error in Saving");
+        }
+    }
+)
 
 
 module.exports = router;
