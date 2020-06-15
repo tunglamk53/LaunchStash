@@ -9,7 +9,7 @@ const CheckBoxResultsStep3 = () => {
     <>
     <ol>
     {Step3.map((value, index) => (
-        <li key={index}>{value}</li>
+        <li key={index} className='text-secondary'>{value}</li>
     ))}
     </ol>
     </>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import UserContext from '../contexts/UserContext'
-import { Redirect } from 'react-router-dom';
+import Loading from './components/Loading'
 
 const ProfilePage = () => {
   const [ user, setUser ] = useState(null)
@@ -27,7 +27,7 @@ const ProfilePage = () => {
         console.log(body);
     }
     fetchUser();
-  }, [setUser])
+  }, [setUser, setLoggedIn])
 
   return (
     <>
@@ -40,7 +40,7 @@ const ProfilePage = () => {
             <p className='text-secondary text-uppercase'>Email:</p>
               <h3 className='text-danger'>{user.email}</h3>
         </>)
-      : <p className='text-secondary text-uppercase text-center'>LOADING.......</p>
+        : <Loading />
       }
     </div>
     </div>

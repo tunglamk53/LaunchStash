@@ -175,7 +175,7 @@ router.get("/my-checklist/:email", AuthenUser, async(req, res) => {
             // .match({"email" : email})
             // .project({"checklist" : 1})
             // .sort("checklist.createdAt")
-        res.status(200).json(user);
+        res.status(200).json(user.checklists);
     } catch (e) {
         res.status(500).send({ message: "Error in Fetching Checklists User" });
     }

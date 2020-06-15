@@ -4,7 +4,6 @@ import CheckBoxContext2 from '../../contexts/CheckBoxContext2'
 
 const CheckBoxStep2 = () => {
     const { Step2, setStep2 } = useContext(CheckBoxContext2)
-    console.log(step_2)
 
     const handleToggle = (value) => {
 
@@ -21,9 +20,6 @@ const CheckBoxStep2 = () => {
         //update this checked information into Parent Component
     }
 
-    console.log(JSON.stringify(Step2))
-
-
     const renderCheckboxLists = () => step_2.map((value, index) => (
       <div key={index} className='ml-2'>
         <input
@@ -32,7 +28,7 @@ const CheckBoxStep2 = () => {
             checked={Step2.indexOf(value.content) === -1 ? false : true}
             onChange={() => handleToggle(value.content)}
         />
-        <label className="form-check-label" htmlFor="">
+        <label className="form-check-label text-secondary" htmlFor="">
             {value.content}
         </label>
       </div>
@@ -42,7 +38,7 @@ const CheckBoxStep2 = () => {
 
     return (
       <div>
-        <p>Time to get things rolling. The next step is to create a website and create a foundation for your marketing.</p>
+        <p className="text-secondary">Time to get things rolling. The next step is to create a website and create a foundation for your marketing.</p>
         {renderCheckboxLists()}
       </div>
     )

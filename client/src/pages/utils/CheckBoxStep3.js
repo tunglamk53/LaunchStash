@@ -21,9 +21,6 @@ const CheckBoxStep3 = () => {
         //update this checked information into Parent Component
     }
 
-    console.log(JSON.stringify(Step3))
-
-
     const renderCheckboxLists = () => step_3.map((value, index) => (
       <div key={index} className='ml-2'>
         <input
@@ -32,7 +29,7 @@ const CheckBoxStep3 = () => {
             checked={Step3.indexOf(value.content) === -1 ? false : true}
             onChange={() => handleToggle(value.content)}
         />
-        <label className="form-check-label" htmlFor="">
+        <label className="form-check-label text-secondary" htmlFor="">
             {value.content}
         </label>
       </div>
@@ -42,7 +39,7 @@ const CheckBoxStep3 = () => {
 
     return (
       <div>
-        <p>If you have the extra time and resources, you can start marketing your product way before you’ve even launched. Usually, this involves the following.</p>
+        <p className="text-secondary">If you have the extra time and resources, you can start marketing your product way before you’ve even launched. Usually, this involves the following.</p>
         {renderCheckboxLists()}
       </div>
     )

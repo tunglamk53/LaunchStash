@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import CheckList from './components/checklist';
-
+import ChecklistsTable from '../pages/components/ChecklistsTable'
+import CheckboxItem from "./components/CheckboxItem";
 
 const ChecklistPage = () => {
-        const [data, setData] = useState()
+        const [checklists, setChecklists] = useState()
+
+        const [ clickedItem, setClickedItem ] = useState(null)
 
         useEffect(() => {
             const fetchData = async() => {
@@ -17,40 +19,45 @@ const ChecklistPage = () => {
                         }
                     })
                 if(res.status === 200) {
-                  const body = await res.json()
-                  setData({ checklists: body.checklist })
-                  console.log(body);
+                  const checklists = await res.json()
+                  setChecklists(checklists)
                 }
             }
             fetchData();
-        }, [setData])
 
-        // console.log(data);
+        }, [setChecklists])
+        console.log(clickedItem);
 
-        return (
-            <>
-            <div className="auth-wrapper">
-              <div className="auth-inner">
-                <h1> My Checklists List </h1>
-                {data ?
-                  data.checklists.map((item, i) => {
-                      // console.log(item._id)
-                    return (
-                        <CheckList key={i}
-                            part1={item.part1}
-                            part2={item.part2}
-                            part3={item.part3}
-                            checklistId={item._id}
-                            setData={setData}
-                            // setDelClicked={setDelClicked}
-                        />
-                    )
-                  })
-                : null}
-              </div>
-            </div>
-            </>
-        )
+
+        if(!clickedItem)
+            return (
+                <>
+                <div className="create-checklist-wrapper">
+                    <h1 className='text-lg-center text-white text-uppercase shadow-lg p-3 rounded'>My Checklists List</h1>
+                </div>
+
+                <div className="create-checklist-wrapper mt-5">
+                <div className="create-checklist-inner">
+                    <ChecklistsTable checklists={checklists} setClickedItem={setClickedItem} />
+
+                </div>
+                </div>
+                </>
+            )
+
+
+        else {
+            return (
+                <>
+                <div className="create-checklist-wrapper">
+                <div className="create-checklist-inner">
+                    <CheckboxItem clickedItem={clickedItem}/>
+                </div>
+                </div>
+                </>
+            )
+        }
 }
 
 export default ChecklistPage
+

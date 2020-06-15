@@ -4,7 +4,6 @@ import CheckBoxContext1 from '../../contexts/CheckBoxContext1'
 
 const CheckBoxStep1 = () => {
     const { Step1, setStep1 } = useContext(CheckBoxContext1)
-    console.log(step_1)
 
     const handleToggle = (value) => {
 
@@ -21,7 +20,7 @@ const CheckBoxStep1 = () => {
         //update this checked information into Parent Component
     }
 
-    console.log(JSON.stringify(Step1))
+    console.log(Step1)
 
 
     const renderCheckboxLists = () => step_1.map((value, index) => (
@@ -32,7 +31,7 @@ const CheckBoxStep1 = () => {
             checked={Step1.indexOf(value.content) === -1 ? false : true}
             onChange={() => handleToggle(value.content)}
         />
-        <label className="form-check-label" htmlFor="">
+        <label className="form-check-label text-secondary" htmlFor="">
             {value.content}
         </label>
       </div>
@@ -42,7 +41,7 @@ const CheckBoxStep1 = () => {
 
     return (
       <div>
-        <p>Before you start planning your launch, you need to figure out your overall product and marketing strategy.</p>
+        <p className="text-secondary">Before you start planning your launch, you need to figure out your overall product and marketing strategy.</p>
         {renderCheckboxLists()}
       </div>
     )

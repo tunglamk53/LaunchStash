@@ -4,7 +4,6 @@ import CheckBoxContext4 from '../../contexts/CheckBoxContext4'
 
 const CheckBoxStep4 = () => {
     const { Step4, setStep4 } = useContext(CheckBoxContext4)
-    console.log(step_4)
 
     const handleToggle = (value) => {
 
@@ -21,9 +20,6 @@ const CheckBoxStep4 = () => {
         //update this checked information into Parent Component
     }
 
-    console.log(JSON.stringify(Step4))
-
-
     const renderCheckboxLists = () => step_4.map((value, index) => (
       <div key={index} className='ml-2'>
         <input
@@ -32,7 +28,7 @@ const CheckBoxStep4 = () => {
             checked={Step4.indexOf(value.content) === -1 ? false : true}
             onChange={() => handleToggle(value.content)}
         />
-        <label className="form-check-label" htmlFor="">
+        <label className="form-check-label text-secondary" htmlFor="">
             {value.content}
         </label>
       </div>
@@ -42,7 +38,7 @@ const CheckBoxStep4 = () => {
 
     return (
       <div>
-        <p>Once you have an MVP, you want to validate 2 things: that your product works, and that it can drive conversions (and hence, revenue). Here’s how to do it lean.</p>
+        <p className="form-check-label text-secondary">Once you have an MVP, you want to validate 2 things: that your product works, and that it can drive conversions (and hence, revenue). Here’s how to do it lean.</p>
         {renderCheckboxLists()}
       </div>
     )

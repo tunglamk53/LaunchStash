@@ -60,40 +60,48 @@ const CreationPage = () => {
         setStep2([])
         setStep3([])
         setStep4([])
-    }, [setIsSuccess])
+    }, [setIsSuccess, setStep1, setStep2, setStep3, setStep4])
 
     if(isSuccess === false) {
         return (
             <>
             <div className="create-checklist-wrapper">
+                <h1 className='text-lg-center text-white text-uppercase shadow-lg p-3 rounded'>Create your Checklist</h1>
+            </div>
+
+            <div className="create-checklist-wrapper mt-5">
             <div className="create-checklist-inner">
-              <h1 className='text-lg-center text-secondary text-uppercase'>Create your Checklist</h1>
               <h5 className='text-secondary'>(Please use this section to Add your Checklists)</h5>
                 <br/>
-
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
-                        <InputGroup.Text className='text-secondary'>
+                        <InputGroup.Text className='badge-danger'>
                             CHECKLIST NAME:
                         </InputGroup.Text>
                     </InputGroup.Prepend>
                     <FormControl className='text-danger' onChange={(e) => setChecklistName(e.target.value)}/>
                 </InputGroup>
-
                 <CheckBoxes />
+            </div>
+            </div>
 
-            </div>
-            </div>
+
+            <Button type="button" className="btn-outline-info text-white shadow-lg p-3 btn btn-danger btn-lg float-right mt-4 mr-5 badge-pill" onClick={onSaveCheckLists}>
+                SAVE CHECKLIST !
+            </Button>
+
 
             <div className="create-checklist-wrapper mt-5 mb-5">
             <div className="create-checklist-inner">
-              <h3 className='text-lg-center text-secondary text-uppercase'>Result:</h3>
+              <h3 className='text-secondary text-uppercase'>
+                  Result:
+              </h3>
                 <h5 className='text-secondary'>(Please expand Steps below to see more info)</h5>
                 <br/>
 
                 <InputGroup className="mb-3">
                     <InputGroup.Prepend>
-                        <InputGroup.Text className='text-secondary'>
+                        <InputGroup.Text className='text-danger'>
                             CHECKLIST NAME:
                         </InputGroup.Text>
                     </InputGroup.Prepend>
@@ -101,9 +109,6 @@ const CreationPage = () => {
                 </InputGroup>
                 <CheckBoxResults />
 
-                <Button type="button" className="btn btn-danger btn-lg float-right mt-4" onClick={onSaveCheckLists}>
-                    SAVE CHECKLIST !
-                </Button>
             </div>
             </div>
             </>
@@ -117,9 +122,18 @@ const CreationPage = () => {
             <div className="create-checklist-wrapper">
               <div className="create-checklist-inner">
                 <h3 className='text-lg-center text-secondary text-uppercase'>Checklist is Successfully Saved !!!</h3>
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                      <InputGroup.Text className='text-secondary'>
+                          CHECKLIST NAME:
+                      </InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <FormControl className='text-danger' disabled value={checklistName}/>
+                </InputGroup>
+
                 <CheckBoxResults />
                 <br/>
-                  <Link className='btn btn-danger btn-lg float-right mt-4' to={"/"}>CREATE ANOTHER CHECKLIST</Link>
+                  <Link className='btn btn-danger btn-sm float-right mt-4' to={"/"}>CREATE ANOTHER CHECKLIST</Link>
               </div>
             </div>
             </>

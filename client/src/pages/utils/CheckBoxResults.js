@@ -12,7 +12,7 @@ const CheckBoxResults = () => {
     <Accordion defaultActiveKey="">
     <Card>
         <Accordion.Toggle as={Card.Header} eventKey="0">
-            <Button className='btn-secondary'>Step #1 - Research Phase</Button>
+            <Button className='btn-success btn-block'>Step #1 - Research Phase</Button>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey="0">
             <Card.Body>
@@ -24,7 +24,7 @@ const CheckBoxResults = () => {
     </Card>
     <Card>
         <Accordion.Toggle as={Card.Header} eventKey="1">
-            <Button className='btn-secondary'>Step #2 - Slap Together a Website</Button>
+            <Button className='btn-info btn-block'>Step #2 - Slap Together a Website</Button>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey="1">
             <Card.Body>
@@ -35,7 +35,7 @@ const CheckBoxResults = () => {
     </Card>
     <Card>
         <Accordion.Toggle as={Card.Header} eventKey="2">
-            <Button className='btn-secondary'>Step #3 - Do Some Pre-Launch Marketing</Button>
+            <Button className='btn-primary btn-block'>Step #3 - Do Some Pre-Launch Marketing</Button>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey="2">
             <Card.Body>
@@ -46,7 +46,7 @@ const CheckBoxResults = () => {
     </Card>
     <Card>
         <Accordion.Toggle as={Card.Header} eventKey="3">
-            <Button className='btn-secondary'>Step #4 - Get Some Initial Traction</Button>
+            <Button className='btn-warning text-white btn-block'>Step #4 - Get Some Initial Traction</Button>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey="3">
             <Card.Body>
