@@ -1,19 +1,22 @@
 import React from 'react'
 import { Accordion, Card, Button } from 'react-bootstrap';
+import CheckBoxStep1 from "./CheckBoxStep1"
 import CheckBoxStep2 from './CheckBoxStep2'
+import CheckBoxStep3 from "./CheckBoxStep3"
+import CheckBoxStep4 from "./CheckBoxStep4"
 
-const CheckBoxs = () => {
+const CheckBoxes = () => {
 
   return (
     <>
-    <Accordion defaultActiveKey="1">
+    <Accordion defaultActiveKey="">
     <Card>
         <Accordion.Toggle as={Card.Header} eventKey="0">
-            <Button className='btn-success'>Checklist 1</Button>
+            <Button className='btn-success'>Step #1 - Research Phase</Button>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey="0">
             <Card.Body>
-
+                <CheckBoxStep1 />
 
 
             </Card.Body>
@@ -32,11 +35,22 @@ const CheckBoxs = () => {
     </Card>
     <Card>
         <Accordion.Toggle as={Card.Header} eventKey="2">
-            <Button className='btn-primary'>Checklist 3</Button>
+            <Button className='btn-primary'>Step #3 - Do Some Pre-Launch Marketing</Button>
         </Accordion.Toggle>
         <Accordion.Collapse eventKey="2">
             <Card.Body>
+                <CheckBoxStep3 />
 
+            </Card.Body>
+        </Accordion.Collapse>
+    </Card>
+    <Card>
+        <Accordion.Toggle as={Card.Header} eventKey="3">
+            <Button className='btn-warning'>Step #4 - Get Some Initial Traction</Button>
+        </Accordion.Toggle>
+        <Accordion.Collapse eventKey="3">
+            <Card.Body>
+                <CheckBoxStep4 />
 
             </Card.Body>
         </Accordion.Collapse>
@@ -46,4 +60,4 @@ const CheckBoxs = () => {
   )
 }
 
-export default CheckBoxs
+export default CheckBoxes

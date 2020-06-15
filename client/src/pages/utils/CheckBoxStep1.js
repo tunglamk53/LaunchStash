@@ -1,15 +1,15 @@
 import React, { useContext } from 'react'
-import step_2 from '../../data/step_2'
-import CheckBoxContext2 from '../../contexts/CheckBoxContext2'
+import step_1 from '../../data/step_1'
+import CheckBoxContext1 from '../../contexts/CheckBoxContext1'
 
-const CheckBoxStep2 = () => {
-    const { Step2, setStep2 } = useContext(CheckBoxContext2)
-    console.log(step_2)
+const CheckBoxStep1 = () => {
+    const { Step1, setStep1 } = useContext(CheckBoxContext1)
+    console.log(step_1)
 
     const handleToggle = (value) => {
 
-        const currentIndex = Step2.indexOf(value);
-        const newChecked = [...Step2];
+        const currentIndex = Step1.indexOf(value);
+        const newChecked = [...Step1];
 
         if (currentIndex === -1) {
             newChecked.push(value)
@@ -17,19 +17,19 @@ const CheckBoxStep2 = () => {
             newChecked.splice(currentIndex, 1)
         }
 
-        setStep2(newChecked)
+        setStep1(newChecked)
         //update this checked information into Parent Component
     }
 
-    console.log(JSON.stringify(Step2))
+    console.log(JSON.stringify(Step1))
 
 
-    const renderCheckboxLists = () => step_2.map((value, index) => (
+    const renderCheckboxLists = () => step_1.map((value, index) => (
       <div key={index} className='ml-2'>
         <input
             type="checkbox"
             className="form-check-input"
-            checked={Step2.indexOf(value.content) === -1 ? false : true}
+            checked={Step1.indexOf(value.content) === -1 ? false : true}
             onChange={() => handleToggle(value.content)}
         />
         <label className="form-check-label" htmlFor="">
@@ -42,10 +42,10 @@ const CheckBoxStep2 = () => {
 
     return (
       <div>
-        <p>Time to get things rolling. The next step is to create a website and create a foundation for your marketing.</p>
+        <p>Before you start planning your launch, you need to figure out your overall product and marketing strategy.</p>
         {renderCheckboxLists()}
       </div>
     )
 }
 
-export default CheckBoxStep2
+export default CheckBoxStep1

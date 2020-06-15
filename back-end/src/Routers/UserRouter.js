@@ -106,7 +106,7 @@ router.post(
 
             if (!user)
                 return res.status(400).json({
-                    message: "User Not Exist !"
+                    message: "Email Not Exist !"
                 });
 
             const isMatch = await bcrypt.compare(password, user.password);
@@ -235,14 +235,22 @@ router.put(
     async(req, res) => {
         const {
             email,
-            step2
+            name,
+            step1,
+            step2,
+            step3,
+            step4
         } = req.body;
 
         try {
             await UserModel.findOneAndUpdate({ email: email }, {
                     $addToSet: {
                         'checklists': {
-                            'step2': step2
+                          'name': name,
+                          'step1': step1,
+                          'step2': step2,
+                          'step3': step3,
+                          'step4': step4
                         }
                     }
                 }, { upsert: true, new: true },

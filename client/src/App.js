@@ -18,20 +18,32 @@ import RouteHandler from './router/RouteHandler'
 import CreationPage from './pages/CreationPage';
 import ChecklistPage from './pages/ChecklistPage';
 import UserContext from './contexts/UserContext'
-import CheckBoxContext from './contexts/CheckBoxContext'
+import CheckBoxContext1 from './contexts/CheckBoxContext1'
+import CheckBoxContext2 from './contexts/CheckBoxContext2'
+import CheckBoxContext3 from './contexts/CheckBoxContext3'
+import CheckBoxContext4 from './contexts/CheckBoxContext4'
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("myToken"))
-  const value = useMemo(() => ({ loggedIn, setLoggedIn }), [loggedIn, setLoggedIn])
+    const [loggedIn, setLoggedIn] = useState(localStorage.getItem("myToken"))
+    const value = useMemo(() => ({ loggedIn, setLoggedIn }), [loggedIn, setLoggedIn])
   // const loggedIn = localStorage.getItem("myToken")
-  const [Step2, setStep2] = useState([])
-  const checkboxValue = useMemo(() => ({ Step2, setStep2 }), [Step2, setStep2]);
+    const [Step1, setStep1] = useState([])
+    const checkboxValue1 = useMemo(() => ({ Step1, setStep1 }), [Step1, setStep1])
+    const [Step2, setStep2] = useState([])
+    const checkboxValue2 = useMemo(() => ({ Step2, setStep2 }), [Step2, setStep2])
+    const [Step3, setStep3] = useState([])
+    const checkboxValue3 = useMemo(() => ({ Step3, setStep3 }), [Step3, setStep3])
+    const [Step4, setStep4] = useState([])
+    const checkboxValue4 = useMemo(() => ({ Step4, setStep4 }), [Step4, setStep4])
 
 
   return (
     <Router>
       <UserContext.Provider value={value}>
-      <CheckBoxContext.Provider value={checkboxValue}>
+      <CheckBoxContext1.Provider value={checkboxValue1}>
+      <CheckBoxContext2.Provider value={checkboxValue2}>
+      <CheckBoxContext3.Provider value={checkboxValue3}>
+      <CheckBoxContext4.Provider value={checkboxValue4}>
         <div className="App">
           <div className="NavBar">
             <NavBar />
@@ -63,7 +75,10 @@ function App() {
           }
 
         </div>
-      </CheckBoxContext.Provider>
+      </CheckBoxContext4.Provider>
+      </CheckBoxContext3.Provider>
+      </CheckBoxContext2.Provider>
+      </CheckBoxContext1.Provider>
       </UserContext.Provider>
     </Router>
   );

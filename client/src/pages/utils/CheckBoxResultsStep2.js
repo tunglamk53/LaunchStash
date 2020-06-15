@@ -1,16 +1,18 @@
 import React, { useContext } from 'react'
-import CheckBoxContext from '../../contexts/CheckBoxContext'
+import CheckBoxContext2 from '../../contexts/CheckBoxContext2'
 
 
 const CheckBoxResultsStep2 = () => {
-  const { Step2 } = useContext(CheckBoxContext)
+  const { Step2 } = useContext(CheckBoxContext2)
 
   return (
-    Step2.map((value, index) => (
-      <div key={index}>
-        <p>{value}</p>
-      </div>
-    ))
+    <>
+    <ol>
+    {Step2.map((value, index) => (
+        <li key={index}>{value}</li>
+    ))}
+    </ol>
+    </>
   )
 }
 

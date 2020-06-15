@@ -41,10 +41,10 @@ const Login = () => {
         <div className="auth-wrapper">
         <div className="auth-inner">
             <form onSubmit={submit}>
-                <h3>Log In</h3>
+                <h3 className='text-secondary'>Log In</h3>
 
                 <div className="form-group">
-                    <label>Email</label>
+                    <label className='text-secondary'>Email</label>
                     <input
                         type="email"
                         value={email}
@@ -54,7 +54,7 @@ const Login = () => {
                 </div>
 
                 <div className="form-group">
-                    <label>Password</label>
+                    <label className='text-secondary'>Password</label>
                     <input
                         type="password"
                         value={password}
@@ -70,11 +70,11 @@ const Login = () => {
                 <div className="form-group">
                     <div className="custom-control custom-checkbox">
                         <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                        <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
+                        <label className="custom-control-label text-secondary" htmlFor="customCheck1">Remember me</label>
                     </div>
                 </div>
 
-                    <button type="submit" className="btn btn-primary btn-block">Submit</button>
+                    <button type="submit" className="btn btn-danger btn-block">Submit</button>
 
 
                 <p className="forgot-password text-right">

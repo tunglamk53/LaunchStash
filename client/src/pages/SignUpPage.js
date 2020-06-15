@@ -41,10 +41,10 @@ const SignUp = () => {
         <div className="auth-wrapper">
         <div className="auth-inner">
             <form onSubmit={submit}>
-            <h3>Sign Up</h3>
+            <h3 className='text-secondary'>Sign Up</h3>
 
             <div className="form-group">
-                <label>First Name</label>
+                <label className='text-secondary'>First Name</label>
                 <input
                     type="text"
                     name="username"
@@ -55,7 +55,7 @@ const SignUp = () => {
             </div>
 
             <div className="form-group">
-                <label>Email</label>
+                <label className='text-secondary'>Email</label>
                 <input
                     type="email"
                     name="email"
@@ -66,7 +66,7 @@ const SignUp = () => {
             </div>
 
             <div className="form-group">
-                <label>Password</label>
+                <label className='text-secondary'>Password</label>
                 <input
                     type="password"
                     name="password"
@@ -80,7 +80,7 @@ const SignUp = () => {
                     <p className='text-danger'>{message}</p>
             </div>
 
-                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                <button type="submit" className="btn btn-danger btn-block">Sign Up</button>
 
 
             <p className="forgot-password text-right">

@@ -10,11 +10,11 @@ const HomePage = (props) => {
         <>
         <div className="auth-wrapper">
           <div className="auth-inner">
-            <h1>THE HOME PAGE</h1>
+            <h1 className='text-secondary text-center'>THE HOME PAGE</h1>
 
             <button
                 type="button"
-                className="btn btn-primary btn-block"
+                className="btn btn-danger btn-lg btn-block"
                 onClick={onClickCheckList}
             >
             CREATE CHECKLIST

@@ -29,11 +29,11 @@ const NavBar = () => {
         return (
             <nav className="navbar navbar-expand-lg navbar-light fixed-top">
                 <div className="container">
-                    <Link className="navbar-brand" to={"/"}>LAUNCH STASH - CSIS 4495</Link>
+                    <Link className="navbar-brand text-danger" to={"/"}>LAUNCH STASH - CSIS 4495</Link>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <Link className="nav-link" to={"/my-checklist"}>My Checklist</Link>
+                                <Link className="nav-link text-danger" to={"/my-checklist"}>My Checklist</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to={"/profile"}>{localStorage.getItem('myEmail')}</Link>
