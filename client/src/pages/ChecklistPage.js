@@ -38,7 +38,7 @@ const ChecklistPage = () => {
 
                 <div className="create-checklist-wrapper mt-5">
                 <div className="create-checklist-inner">
-                    <ChecklistsTable checklists={checklists} setClickedItem={setClickedItem} />
+                    <ChecklistsTable checklists={checklists} setChecklists={setChecklists} setClickedItem={setClickedItem} />
 
                 </div>
                 </div>

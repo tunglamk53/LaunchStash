@@ -190,14 +190,14 @@ router.delete("/my-checklist/:email/:id", AuthenUser, async(req, res) => {
     try {
         const email = req.params.email
         const id = req.params.id
-        console.log(email)
-        console.log(id)
-        const users = await UserModel.findOneAndUpdate({ "email": email }, { $pull: { checklist: { _id: id } } }, { new: true },
+        // console.log(email)
+        // console.log(id)
+        const users = await UserModel.findOneAndUpdate({ "email": email }, { $pull: { checklists: { _id: id } } }, { new: true },
                 (e, users) => {
                     // if (!e) res.status(500).json({
                     //     errors: e.array()
                     // })
-                    res.status(200).json(users)
+                    res.status(200).json(users.checklists)
                 })
             // const deletedChecklist = await user.pull({ checklist: { _id: id } })
             // console.log(user)
