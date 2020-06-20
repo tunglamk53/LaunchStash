@@ -13,7 +13,7 @@ const HomePage = (props) => {
 
     return (
         <>
-        <div className="auth-wrapper">
+        <div className="auth-wrapper-home">
         <div className="auth-inner-home">
             <h1 className='text-secondary text-center mb-5'>WELCOME TO <span className="text-danger">LAUNCH STASH</span></h1>
 

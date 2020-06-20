@@ -11,7 +11,7 @@ const AboutUsPage = () => {
 
         <div className="create-checklist-wrapper mt-5 text-secondary">
             <div className="create-checklist-inner">
-                <ul className='font-weight-bold'>
+                <ul>
                     <li>Le Thao My Nguyen: 300301243</li>
                     <li>Khue Nguyen: 300300461</li>
                     <li>Tung Lam Trinh: 300267601</li>
