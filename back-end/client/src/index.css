@@ -45,6 +45,7 @@ body, html, .App, #root, .auth-wrapper {
   justify-content: center;
   flex-direction: column;
   text-align: left;
+  margin-bottom: 100px;
 }
 
 .auth-inner {
@@ -92,6 +93,7 @@ body, html, .App, #root, .auth-wrapper {
   flex-direction: column;
   text-align: left;
   margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .create-checklist-inner {
@@ -122,4 +124,13 @@ body, html, .App, #root, .auth-wrapper {
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
   transition: all .3s;
+}
+
+.auth-wrapper-home {
+  display: block;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
