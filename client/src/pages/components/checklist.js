@@ -17,21 +17,20 @@ const checklist = (props) => {
         const body = await result.json()
         // const jsonBody = JSON.stringify(body)
         props.setData({ checklists: body.checklist })
-        // console.log(body)
-        // props.setDelClicked(true)
     }
 
     return (
         <>
-            <Badge pill variant="success">Part 1: {props.part1}</Badge>
-            <Badge pill variant="info">Part 2: {props.part2}</Badge>
-            <Badge pill variant="primary">Part 2: {props.part3}</Badge>
+            <Badge pill variant="success">  Part 1: {props.part1}</Badge>
+            <Badge pill variant="info">     Part 2: {props.part2}</Badge>
+            <Badge pill variant="primary">  Part 2: {props.part3}</Badge>
             <Badge
                 pill
                 variant="danger"
                 className="btn btn-warning float-right mt-1"
                 onClick={deleteClk}
-            >Delete
+            >
+                Delete
             </Badge>
             <br/>
         </>

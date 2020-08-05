@@ -1,6 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import "./assets/vendor/nucleo/css/nucleo.css";
+import "./assets/vendor/font-awesome/css/font-awesome.min.css";
+import "./assets/scss/argon-design-system-react.scss?v1.1.0";
+
+
 import {
   BrowserRouter as Router,
   Route,
@@ -9,25 +14,27 @@ import {
 } from 'react-router-dom';
 
 import NavBar from './pages/NavBar/NavBar'
-import FooterBar from './pages/NavBar/FooterBar'
+import FooterBar from './pages/FooterBar/FooterBar'
 import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
+// import LoginPage from './pages/LoginPage'
+import Login from './pages/Login'
 import SignUpPage from './pages/SignUpPage'
 import LogOutPage from './pages/LogOutPage'
 import ProfilePage from './pages/ProfilePage'
 import RouteHandler from './router/RouteHandler'
-import CreationPage from './pages/CreationPage';
 import ChecklistPage from './pages/ChecklistPage';
-import ProductIdeaPage from "./pages/ProductIdeaPage";
 import UserContext from './contexts/UserContext'
 import CheckBoxContext1 from './contexts/CheckBoxContext1'
 import CheckBoxContext2 from './contexts/CheckBoxContext2'
 import CheckBoxContext3 from './contexts/CheckBoxContext3'
 import CheckBoxContext4 from './contexts/CheckBoxContext4'
-import TargetAudiencesPage from "./pages/TargetAudiencesPage";
-import SolutionsPage from "./pages/SolutionsPage";
+import SolutionsPage from "./pages/articles-pages/SolutionsPage";
+import TargetAudiencesPage from "./pages/articles-pages/TargetAudiencesPage";
+import ProductIdeaPage from "./pages/articles-pages/ProductIdeaPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import FeedbackPage from "./pages/FeedbackPage";
+import CreateResource from "./pages/ChecklistPages/create-resource";
+import CreateChecklist from "./pages/ChecklistPages/create-checklist";
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(localStorage.getItem("myToken"))
@@ -61,14 +68,15 @@ function App() {
               <Route exact path="/" component={HomePage} />
               {/* <Route exact path="/logout" render={() => <LogOutPage setLoggedIn={setLoggedIn} />} /> */}
               <Route exact path="/logout" component={LogOutPage} />
-              <Route exact path="/job-stories" component={ProductIdeaPage} />
+              <Route exact path="/product-idea" component={ProductIdeaPage} />
               <Route exact path="/target-audiences" component={TargetAudiencesPage} />
               <Route exact path="/solutions" component={SolutionsPage} />
               <Route exact path="/about-us" component={AboutUsPage} />
               <Route exact path="/feedback" component={FeedbackPage} />
               <RouteHandler exact path='/profile' component={ProfilePage} />
-              <RouteHandler exact path='/checklist' component={CreationPage} />
               <RouteHandler exact path='/my-checklist' component={ChecklistPage} />
+              <RouteHandler exact path='/create-resource' component={CreateResource} />
+              <RouteHandler exact path='/create-checklist' component={CreateChecklist} />
               <Route path="*" component={() => <Redirect to="/"/> } />
             </Switch>
             </>
@@ -76,15 +84,16 @@ function App() {
             <>
               <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route exact path="/job-stories" component={ProductIdeaPage} />
+              <Route exact path="/product-idea" component={ProductIdeaPage} />
               <Route exact path="/target-audiences" component={TargetAudiencesPage} />
               <Route exact path="/solutions" component={SolutionsPage} />
               <Route exact path="/about-us" component={AboutUsPage} />
               <Route exact path="/feedback" component={FeedbackPage} />
-              <Route exact path="/login" component={LoginPage} />
+              <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={SignUpPage} />
-              <RouteHandler exact path='/checklist' component={CreationPage} />
               <RouteHandler exact path='/my-checklist' component={ChecklistPage} />
+              <RouteHandler exact path='/create-resource' component={CreateResource} />
+              <RouteHandler exact path='/create-checklist' component={CreateChecklist} />
               <Route path="*" component={() => <Redirect to="/"/> } />
             </Switch>
             </>

@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
-import step_1 from '../../data/step_1'
+// import step_1 from '../../data/step_1'
+import checklists from '../../data/checklists'
 import CheckBoxContext1 from '../../contexts/CheckBoxContext1'
+import "../ChecklistPages/css/style4.css"
 
 const CheckBoxStep1 = () => {
     const { Step1, setStep1 } = useContext(CheckBoxContext1)
@@ -23,26 +25,30 @@ const CheckBoxStep1 = () => {
     console.log(Step1)
 
 
-    const renderCheckboxLists = () => step_1.map((value, index) => (
-      <div key={index} className='ml-2'>
-        <input
-            type="checkbox"
-            className="form-check-input"
-            checked={Step1.indexOf(value.content) === -1 ? false : true}
-            onChange={() => handleToggle(value.content)}
-        />
-        <label className="form-check-label text-secondary" htmlFor="">
-            {value.content}
-        </label>
-      </div>
+    const renderCheckboxLists = () => checklists.step1.map((value, index) => (
+      
+          <div key={index} className='mb-3'>
+            <input
+                type="checkbox"
+                className="customCheck inputParent"
+                checked={Step1.indexOf(value.content) === -1 ? false : true}
+                onChange={() => handleToggle(value.content)}
+            />
+            <label className="labelParent" htmlFor="">
+                {value.content}
+            </label>
+          </div>
+        
     ))
 
 
 
     return (
       <div>
-        <p className="text-secondary">Before you start planning your launch, you need to figure out your overall product and marketing strategy.</p>
+        <p className="labelParent">Before you start planning your launch, you need to figure out your overall product and marketing strategy.</p>
+        
         {renderCheckboxLists()}
+
       </div>
     )
 }

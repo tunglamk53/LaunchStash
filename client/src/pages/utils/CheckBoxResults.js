@@ -1,63 +1,87 @@
-import React from 'react'
-import { Accordion, Card, Button } from 'react-bootstrap';
-import CheckBoxResultsStep1 from "./CheckBoxResultsStep1";
-import CheckBoxResultsStep2 from './CheckBoxResultsStep2'
-import CheckBoxResultsStep3 from "./CheckBoxResultsStep3";
-import CheckBoxResultsStep4 from "./CheckBoxResultsStep4";
+import React, { useState } from 'react'
+import ExportPdf from './ExportPdf'
+import ChecklistParts from "../components/checklist-parts"
 
-const CheckBoxResults = () => {
+const CheckBoxResults = (props) => {
+    const [clickedItem, setClickedItem] = useState('Pre-Launch')
 
-  return (
-    <>
-    <Accordion defaultActiveKey=''>
-    <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="0">
-            <Button className='btn-success btn-block'>Stage #1 - Pre-launch</Button>
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="0">
-            <Card.Body>
-                <CheckBoxResultsStep1 />
+    const renderSteps = (step) => {
+        return (
+            <>
+            <ol>
+                {step.map((value, index) => (
+                    <li className="labelParent mb-3" key={index}>{value}</li>
+                ))}
+            </ol>
+            </>
+        )
+    }
 
+    const onClickExportPdf = () => {
+        const pdfItems = {
+            "name": props.name,
+            "step1": props.step1,
+            "step2": props.step2, 
+            "step3": props.step3,
+            "step4": props.step4
+        }
 
-            </Card.Body>
-        </Accordion.Collapse>
-    </Card>
-    <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="1">
-            <Button className='btn-info btn-block'>Stage #2 - Beta/Early Access</Button>
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="1">
-            <Card.Body>
-              <CheckBoxResultsStep2 />
+        ExportPdf(pdfItems)
+    }
 
-            </Card.Body>
-        </Accordion.Collapse>
-    </Card>
-    <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="2">
-            <Button className='btn-primary btn-block'>Stage #3 - Launch</Button>
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="2">
-            <Card.Body>
-                <CheckBoxResultsStep3 />
+   return (
+       <>
+       <section className="section section-lg section-dark pt-lg-0 mt--150">
+        <div class="container-fluid stashContainer text-white">
+            <div class="row bodyContent">
+                <div class="mx-xl-5 w-100 mt-5">
+                    <div class="mx-xl-5">
+                        <div class="container-fluid">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-9">
+                                    <div class="checkList">
+                                        <div class="title">Name: <span>{props.name}</span></div>
 
-            </Card.Body>
-        </Accordion.Collapse>
-    </Card>
-    <Card>
-        <Accordion.Toggle as={Card.Header} eventKey="3">
-            <Button className='btn-warning text-white btn-block'>Stage #4 - Post-launch</Button>
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey="3">
-            <Card.Body>
-                <CheckBoxResultsStep4 />
+                                        {/* Render Checklist Parts Components */}
+                                        <ChecklistParts clickedItem={clickedItem} setClickedItem={setClickedItem}/>
 
-            </Card.Body>
-        </Accordion.Collapse>
-    </Card>
-    </Accordion>
-    </>
-  )
+                                    </div>
+
+                                    <form class="mt-6 mb-6">
+                                        <div class="scroll">
+                                            <div class="checkForm">
+                                            {(() => {
+                                                switch (clickedItem) {
+                                                case "Pre-Launch":      return renderSteps(props.step1);
+                                                case "Beta Access":     return renderSteps(props.step2);
+                                                case "Launch":          return renderSteps(props.step3);
+                                                case "After Launch":    return renderSteps(props.step4);
+                                                default:                return null;
+                                                }
+                                            })()}
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-group mt-5 d-flex justify-content-center">
+                                            {/* <button type="button" class="btn btn-primary primaryBtn save px-5" onClick={onSaveCheckLists}>SAVE CHECKLIST</button> */}
+                                            <button type="button" class="btn btn-primary primaryBtn export ml-5 px-5"
+                                                onClick={() => onClickExportPdf()}
+                                            >
+                                                <i className="fa fa-file-pdf-o mr-2" />
+                                                EXPORT CHECKLIST
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+       </>
+   )
 }
 
 export default CheckBoxResults

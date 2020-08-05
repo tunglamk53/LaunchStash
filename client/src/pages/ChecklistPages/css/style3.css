@@ -1,0 +1,52 @@
+.title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #D2D2D2;
+}
+
+.resourcesItem {
+    height: 3.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 0.625rem;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.resourcesItem:hover, .resourcesItem.active {
+    background-color: #41CBAE;
+}
+
+.resourcesItem .text {
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 130%;
+    color: #FFFFFF
+}
+
+.detailRessource {
+    max-height: 31.25rem;
+    overflow: auto;
+}
+
+.detailList {
+    border-radius: 0.625rem;
+    overflow: hidden;
+}
+
+.listItem {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.listItem .name {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: #D2D2D2;
+}

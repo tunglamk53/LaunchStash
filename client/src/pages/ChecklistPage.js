@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import ChecklistsTable from '../pages/components/ChecklistsTable'
+import ChecklistsTable from './ChecklistsTable'
 import CheckboxItem from "./components/CheckboxItem";
+import {
+    Card,
+    Container,
+    Row,
+    Col
+} from "reactstrap"
 
 const ChecklistPage = () => {
         const [checklists, setChecklists] = useState()
@@ -31,29 +37,52 @@ const ChecklistPage = () => {
 
         if(!clickedItem)
             return (
-                <>
-                <div className="create-checklist-wrapper">
-                    <h1 className='text-lg-center text-white text-uppercase shadow-lg p-3 rounded'>My Checklists List</h1>
-                </div>
+            <>
+            <div className="position-relative">
+                <section className="section section-lg section-shaped pb-250">
+                    <div className="shape shape-style-1 shape-dark">
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                    </div>
+                    
+                    <Container className="py-lg-md d-flex justify-content-center mt-5">
+                            <h3 className='text-lg-center text-white text-uppercase shadow-lg p-3 rounded'>
+                                My Checklists
+                            </h3>
+                    </Container>
 
-                <div className="create-checklist-wrapper mt-5">
-                <div className="create-checklist-inner">
-                    <ChecklistsTable checklists={checklists} setChecklists={setChecklists} setClickedItem={setClickedItem} />
-
-                </div>
-                </div>
-                </>
+                    <Container className="mt-5">
+                        <Row className="justify-content-center">
+                            <Col lg="8">
+                                <Card className="bg-gradient-secondary shadow">
+                                    <ChecklistsTable checklists={checklists} setChecklists={setChecklists} setClickedItem={setClickedItem} />
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Container>
+                </section>
+            </div>
+            </>
             )
 
 
         else {
             return (
                 <>
-                <div className="create-checklist-wrapper">
-                <div className="create-checklist-inner">
+                <section className="section-dark section-xl my-0">
+                    <Container className="py-lg-md d-flex justify-content-center">
+                        
+                    </Container>
+                </section>
+                    
                     <CheckboxItem clickedItem={clickedItem}/>
-                </div>
-                </div>
                 </>
             )
         }

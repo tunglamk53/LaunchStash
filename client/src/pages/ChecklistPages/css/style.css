@@ -1,0 +1,118 @@
+/* check list */
+
+.checkListItem {
+    height: 12.0625rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.checkListItem .top {
+    position: absolute;
+    height: 50%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: skewX(15deg);
+}
+
+.checkListItem .bottom {
+    position: absolute;
+    height: 50%;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: skewX(-15deg);
+}
+.checkList .itemContainer{
+    margin-top: 15px;
+}
+
+.checkList .itemContainer:first-child {
+    overflow: hidden;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.checkList .itemContainer:first-child .checkListItem .top {
+    width: 120%;
+    left: -20%
+}
+
+.checkList .itemContainer:first-child .checkListItem .bottom {
+    width: 120%;
+    left: -20%
+}
+
+.checkList .itemContainer:last-child {
+    overflow: hidden;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.checkList .itemContainer:last-child .checkListItem .top {
+    width: 120%;
+}
+
+.checkList .itemContainer:last-child .checkListItem .bottom {
+    width: 120%;
+}
+
+.checkListItem:not(:hover) .top {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.checkListItem:not(:hover) .bottom {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.checkListItem:hover .top {
+    background-color: #3ED0B0;
+}
+
+.checkListItem:hover .bottom {
+    background-color: #3ED0B0;
+}
+
+.checkListItem:hover {
+    color: #282828;
+}
+
+.checkListItem .text {
+    z-index: 2;
+}
+
+.title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #D2D2D2;
+}
+
+.resourcesItem {
+    height: 12.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 0.625rem;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.resourcesItem:hover {
+    background-color: #3ED0B0;
+}
+
+.resourcesItem .text {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 130%;
+    color: #FFFFFF
+}

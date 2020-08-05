@@ -1,15 +1,18 @@
-import React from 'react'
-import {Accordion, Button, Card, FormControl, InputGroup} from "react-bootstrap";
-import FaceBookShareButton from "./FacebookShareButton";
+import React, { useState } from 'react'
+import "../ChecklistPages/css/site.css"
+import "../ChecklistPages/css/style4.css"
+import ExportPdf from '../utils/ExportPdf'
+import ChecklistParts from "./checklist-parts"
 
 const CheckboxItem = (props) => {
+    const [clickedItem, setClickedItem] = useState('Pre-Launch')
 
     const renderSteps = (step) => {
         return (
             <>
             <ol>
                 {step.map((value, index) => (
-                    <li key={index}>{value}</li>
+                    <li className="labelParent mb-3" key={index}>{value}</li>
                 ))}
             </ol>
             </>
@@ -18,63 +21,54 @@ const CheckboxItem = (props) => {
 
    return (
        <>
-       <InputGroup className="mb-3">
-           <InputGroup.Prepend>
-               <InputGroup.Text className='text-secondary'>
-                   CHECKLIST NAME:
-               </InputGroup.Text>
-           </InputGroup.Prepend>
-           <FormControl className='text-danger' disabled value={props.clickedItem.name}/>
-       </InputGroup>
+       <section className="section section-lg section-dark pt-lg-0 mt--150">
+        <div class="container-fluid stashContainer text-white">
+            <div class="row bodyContent">
+                <div class="mx-xl-5 w-100 mt-5">
+                    <div class="mx-xl-5">
+                        <div class="container-fluid">
+                            <div class="row justify-content-center">
+                                <div class="col-xl-9">
+                                    <div class="checkList">
+                                        
+                                        <div class="title">Name: <span>{props.clickedItem.name}</span></div>
 
-       <Accordion defaultActiveKey="">
-           <Card>
-               <Accordion.Toggle as={Card.Header} eventKey="0">
-                   <Button className='btn-success btn-block'>Step #1 - Research Phase</Button>
-               </Accordion.Toggle>
-               <Accordion.Collapse eventKey="0">
-                   <Card.Body>
-                       {renderSteps(props.clickedItem.step1)}
+                                        {/* Render Checklist Parts Components */}
+                                        <ChecklistParts clickedItem={clickedItem} setClickedItem={setClickedItem}/>
+                                        
+                                    </div>
 
-                   </Card.Body>
-               </Accordion.Collapse>
-           </Card>
-           <Card>
-               <Accordion.Toggle as={Card.Header} eventKey="1">
-                   <Button className='btn-info btn-block'>Step #2 - Slap Together a Website</Button>
-               </Accordion.Toggle>
-               <Accordion.Collapse eventKey="1">
-                   <Card.Body>
-                       {renderSteps(props.clickedItem.step2)}
-
-                   </Card.Body>
-               </Accordion.Collapse>
-           </Card>
-           <Card>
-               <Accordion.Toggle as={Card.Header} eventKey="2">
-                   <Button className='btn-primary btn-block'>Step #3 - Do Some Pre-Launch Marketing</Button>
-               </Accordion.Toggle>
-               <Accordion.Collapse eventKey="2">
-                   <Card.Body>
-                       {renderSteps(props.clickedItem.step3)}
-
-                   </Card.Body>
-               </Accordion.Collapse>
-           </Card>
-           <Card>
-               <Accordion.Toggle as={Card.Header} eventKey="3">
-                   <Button className='btn-warning btn-block text-white'>Step #4 - Get Some Initial Traction</Button>
-               </Accordion.Toggle>
-               <Accordion.Collapse eventKey="3">
-                   <Card.Body>
-                       {renderSteps(props.clickedItem.step4)}
-
-                   </Card.Body>
-               </Accordion.Collapse>
-           </Card>
-       </Accordion>
-
-       <FaceBookShareButton />
+                                    <form class="mt-6 mb-6">
+                                        <div class="scroll">
+                                            <div class="checkForm">
+                                                {(() => {
+                                                    switch (clickedItem) {
+                                                    case "Pre-Launch":      return renderSteps(props.clickedItem.step1);
+                                                    case "Beta Access":     return renderSteps(props.clickedItem.step2);
+                                                    case "Launch":          return renderSteps(props.clickedItem.step3);
+                                                    case "After Launch":    return renderSteps(props.clickedItem.step4);
+                                                    default:                return null;
+                                                    }
+                                                })()}   
+                                            </div>
+                                        </div>
+                                        <div class="form-group mt-5 d-flex justify-content-center">
+                                            <button type="button" class="btn btn-primary primaryBtn export ml-5 px-5"
+                                                onClick={() => ExportPdf(props.clickedItem)}
+                                            >
+                                                <i className="fa fa-file-pdf-o mr-2" />
+                                                EXPORT CHECKLIST
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
        </>
    )
 }
